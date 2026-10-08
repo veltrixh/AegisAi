@@ -1,6 +1,6 @@
 import { ScanModel, FindingModel, ScanComparisonResult } from './types';
 
-const API_BASE = '';
+const API_BASE = (import.meta.env.VITE_API_URL || '').replace(/\/+$/, '');
 
 export async function launchScan(targetUrl: string, profile: string = 'standard'): Promise<ScanModel> {
   const res = await fetch(`${API_BASE}/api/scans`, {

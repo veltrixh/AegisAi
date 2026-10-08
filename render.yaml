@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: aegis-api
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    healthCheckPath: /api/health
+    envVars:
+      - key: AI_PROVIDER
+        value: none
+      - key: DATABASE_URL
+        value: sqlite:////app/data/vuln_scanner.db
+    disk:
+      name: aegis-data
+      mountPath: /app/data
+      sizeGB: 1
