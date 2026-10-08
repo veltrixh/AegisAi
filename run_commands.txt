@@ -1,0 +1,22 @@
+AEGIS AI-Vuln-Scanner - Run Commands
+
+cd /home/harsit/COLLEGE/AEGIS_AI_multiagent_backend
+
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+
+cp .env.example .env
+
+cd frontend
+npm install
+npm run build
+cd ..
+
+.venv/bin/uvicorn backend.main:app --host 0.0.0.0 --port 8000 --reload
+
+Open in browser:
+http://localhost:8000
+
+Stop the server:
+Ctrl+C

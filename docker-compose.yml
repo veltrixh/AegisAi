@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  aegis-scanner:
+    build: .
+    container_name: aegis-ai-vuln-scanner
+    ports:
+      - "8000:8000"
+    environment:
+      - HOST=0.0.0.0
+      - PORT=8000
+      - AI_PROVIDER=none
+      - DATABASE_URL=sqlite:///vuln_scanner.db
+    volumes:
+      - scanner-data:/app/data
+    restart: unless-stopped
+
+volumes:
+  scanner-data:
